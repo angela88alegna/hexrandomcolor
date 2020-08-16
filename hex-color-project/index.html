@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container" >
+
+
+         <p class="color-name h1"></p>
+
+         <button  type="button" class="btn btn-dark">change Color!</button>
+         <button  type="button" class="btn btn2 btn-dark">copy HexCode!</button>
+    
+
+    </div>
+
+
+
+    <script>
+
+const hex= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+const btn= document.querySelector(".btn");
+const colorName= document.querySelector(".color-name");
+btn.addEventListener("click", function(){
+let hexColor="#";
+for(let i=0; i<6; i++){
+hexColor += hex[randomNumber()];
+
+}
+
+document.body.style.backgroundColor=hexColor;
+colorName.innerText= hexColor;
+});
+
+function randomNumber(){
+return (Math.floor(Math.random()*hex.length))
+
+}
+// copy to clipboard
+copyColor= document.querySelector(".btn2");
+copyColor.addEventListener("click", ()=>{
+    const textarea = document.createElement("textarea");
+    const color = colorName.innerText;
+
+
+
+textarea.value= color;
+document.body.appendChild(textarea);
+textarea.select();
+document.execCommand("copy");
+textarea.remove();
+alert("HexCode copied successfully!")
+});
+
+
+
+    </script>
+</body>
+</html>
